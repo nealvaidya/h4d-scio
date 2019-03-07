@@ -1,1 +1,0 @@
-# yashasmanjunatha.github.io
