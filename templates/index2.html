@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="colorlib.com">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Poppins:700" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
   </head>
   <body>
     <div class="s011">
-      <form>
+      <form action = "http://localhost:5000/result" method = "POST">
         <fieldset>
           <legend>Search</legend>
         </fieldset>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="input-field">
                   <label>Input</label>
-                  <input type="text" placeholder="Key Word" />
+                  <input type="text" placeholder="Key Word" name="keyword"/>
                 </div>
               </div>
             </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="input-field">
                   <label>Start Date</label>
-                  <input class="datepicker" type="text" placeholder="mm/dd/yy" />
+                  <input name="startdate" class="datepicker" type="text" placeholder="mm/dd/yy" />
                 </div>
               </div>
               <div class="input-wrap">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="input-field">
                   <label>End Date</label>
-                  <input class="datepicker" type="text" placeholder="mm/dd/yy" />
+                  <input name="enddate" class="datepicker" type="text" placeholder="mm/dd/yy" />
                 </div>
               </div>
               <div class="input-wrap">
@@ -61,7 +61,7 @@
                 <div class="input-field">
                   <label>Region</label>
                   <div class="input-select">
-                    <select data-trigger="" name="choices-single-defaul">
+                    <select data-trigger="" name="region">
                       <option placeholder="">North Africa</option>
                       <option>Sub-Saharan Africa</option>
                       <option>West Africa</option>
@@ -72,13 +72,13 @@
               </div>
             </div>
             <div class="row last">
-              <button class="btn-search" type="button" id="searching">Search</button>
+              <input type="submit" value="Search"/>
             </div>
           </div>
         </div>
       </form>
     </div>
-    <script src="js/extention/choices.js"></script>
+    <script src="{{ url_for('static', filename='js/extention/choices.js') }}"></script>
     <script>
       const choices = new Choices('[data-trigger]',
       {
@@ -87,7 +87,7 @@
       });
 
     </script>
-    <script src="js/extention/flatpickr.js"></script>
+    <script src="{{ url_for('static', filename='js/extention/flatpickr.js') }}"></script>
     <script>
       flatpickr(".datepicker",
       {
