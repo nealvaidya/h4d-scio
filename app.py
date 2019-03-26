@@ -39,7 +39,7 @@ def my_form():
     return render_template('index2.html')
 
 @app.route('/result', methods=['POST', 'GET'])
-def my_form_post():
+def my_form_post(phrase):
     if request.method == 'POST':
         result = request.form
         keyword = result.get('keyword').lower()
