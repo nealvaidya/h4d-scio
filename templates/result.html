@@ -21,10 +21,19 @@
          margin-top: 20px;
       }
    </style>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
    <div class="container">
+      <div class = "row">
+         <h1>  
+            <a class="btn btn-outline-secondary" href="/" role="button">
+               <i class="fas fa-arrow-left"></i>
+            </a>
+            {{ keyword }} 
+         </h1>
+      </div>
       <div class="row">
          <div class="col-4" id="similar-words">
             <h2>Similar Words:</h2>
@@ -93,12 +102,15 @@
       var x = d3.scaleTime()
       .domain([new Date(2016, 0, 1), new Date(2016,4,12)])
       .range([0, width]);
+
       var y = d3.scaleLinear()
-      .domain([0,10])
+      .domain([0, d3.max(freqs.map( function(x) {return x.freq} ))])
       .range([height, 0])
+
       var Line = d3.line()
       .x(function(d) { return x(parseDate(d.date)); })
       .y(function(d) { return y(d.freq); });
+
       var svg = d3.select('#frequency-graph')
       .append('svg')
       .attr('width', svgwidth)
