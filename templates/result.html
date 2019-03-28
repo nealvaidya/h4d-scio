@@ -94,7 +94,7 @@
       .domain([new Date(2016, 0, 1), new Date(2016,4,12)])
       .range([0, width]);
       var y = d3.scaleLinear()
-      .domain([0,10])
+      .domain([0, d3.max(freqs.map( function(x) {return x.freq} )) ])
       .range([height, 0])
       var Line = d3.line()
       .x(function(d) { return x(parseDate(d.date)); })

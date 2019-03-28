@@ -27,7 +27,7 @@ def scio(keyword, start_date, end_date):
     
     freq = []
     for single_date in daterange:
-                freq.append(' '.join(df[single_date.strftime("%Y-%m-%d"):single_date.strftime("%Y-%m-%d")].iloc[:,7].values).count(keyword))
+                freq.append(' '.join(df[single_date.strftime("%Y-%m-%d"):single_date.strftime("%Y-%m-%d")].iloc[:,7].values).lower().count(keyword))
     return pd.DataFrame({
             'date': daterange.strftime("%Y-%m-%d").tolist(), 
             'freq': freq})
@@ -39,7 +39,7 @@ def my_form():
     return render_template('index2.html')
 
 @app.route('/result', methods=['POST', 'GET'])
-def my_form_post(phrase):
+def my_form_post():
     if request.method == 'POST':
         result = request.form
         keyword = result.get('keyword').lower()
