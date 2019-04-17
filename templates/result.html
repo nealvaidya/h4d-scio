@@ -7,7 +7,6 @@
    crossorigin="anonymous"></script>
    <script src="https://d3js.org/d3.v5.min.js"></script>
    <script src="https://unpkg.com/billboard.js/dist/billboard.min.js" type="text/javascript"></script>
-   <script src="{{ url_for('static', filename = 'data.js') }}"></script>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <style>
       .line {
@@ -110,12 +109,12 @@
       var parseDate = d3.timeParse("%Y-%m-%d");
       
       var x = d3.scaleTime()
-      .domain([ parseDate(ocurrences[0].date),
-         parseDate(ocurrences[ocurrences.length-1].date) ])
+      .domain([ parseDate('2016-01-01'),
+         parseDate('2016-5-12') ])
       .range([0, width]);
 
       var y = d3.scaleLinear()
-      .domain([0, d3.max(ocurrences.map( function(x) {return x.freq} )) ])
+      .domain([0, 10])
       .range([height, 0])
 
       var Line = d3.line()

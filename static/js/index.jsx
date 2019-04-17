@@ -1,7 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "react-tweet";
-import Tweet from 'react-tweet';
+import TweetContainer from "./mytweetcomponent";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Paper from '@material-ui/core/Paper'
+import InputBase from '@material-ui/core/InputBase'
+import Eye from 'mdi-material-ui'
+import IconButton from '@material-ui/core/IconButton'
+import { Icon } from "@material-ui/core";
 
 const data = {
     description: "",
@@ -15,53 +22,24 @@ const data = {
 
 const tweetsData = [data]
 
-class MyTweetComponent extends React.Component {
-    render() {
-        const tweetData = {
-            id_str: 'id_str',
-            user: {
-                name: this.props.data.name,
-                screen_name: this.props.data.username
-            },
-            text: this.props.data.tweets,
-            created_at: this.props.data.ymd,
-            favorite_count: 'favorite_count',
-            retweet_count: 'retweet_count',
-            entities: {
-                urls: [],
-                user_mentions: [],
-                hashtags: [],
-                symbols: []
-            }
-        }
-
-        return (
-            <Tweet data={tweetData}/>
-        )
-    }
-}
-
-class TweetContainer extends React.Component {
-    constructor(props) {
-        super(props);
-//        this.state = {data: tweetsData}
-    }
-
-    render() {
-        const listItems = this.props.data.map(
-            (d) => <MyTweetComponent data={d}/>
-        );
-        return (
-            <div>{listItems}</div>
-        )
-
-    }
-}
-
 function renderContainer(data) {
     ReactDOM.render(<TweetContainer data={data}/>,
         document.getElementById("tweets"));
 }
+
+function SearchBar(props) {
+    return (
+        <Paper>
+            <InputBase placeholder="Search"/>
+            <IconButton>
+                <Eye />
+            </IconButton>
+        </Paper>
+    )
+}
+
+ReactDOM.render(<SearchBar />,
+    document.getElementById("similar-words"))
 
 //exports.renderContainer = renderContainer;
 window.renderContainer = renderContainer;

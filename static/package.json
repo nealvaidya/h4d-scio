@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/nealvaidya/h4d-scio#readme",
   "dependencies": {
-    "babel-preset-react": "^6.24.1"
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "babel-preset-react": "^6.24.1",
+    "mdi-material-ui": "^5.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
